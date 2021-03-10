@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3675b211bfe27948b41d5081835ea71, type: 3}
+  m_Name: GemaRosa
+  m_EditorClassIdentifier: 
+  itemType: 12
+  icon: {fileID: 21300000, guid: 69a514215ca62414a8464e62a2f1dd18, type: 3}
+  lifeAmount: 5
+  effectiveness: 5
