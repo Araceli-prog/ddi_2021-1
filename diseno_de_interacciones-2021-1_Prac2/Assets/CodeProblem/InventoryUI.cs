@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class InventoryUI : MonoBehaviour
 {
     private Inventory _inventory;
     public GameObject panel;
+    public string Activar = "UpdateUI";
 
     void Start()
     {
@@ -16,7 +18,8 @@ public class InventoryUI : MonoBehaviour
 
  void Update()//visializacion del inventario
     {
-        if(Input.GetKeyDown(KeyCode.I))
+       // if(Input.GetKeyDown(KeyCode.I))
+        if(CrossPlatformInputManager.GetButtonDown(Activar))
         {
            panel.SetActive(!panel.activeSelf);
            UpdateUI();
@@ -35,7 +38,7 @@ public class InventoryUI : MonoBehaviour
           Item[] gemaAzulItems = _inventory.GetAllItemsByType(ItemType.GemaAzul);    
           Item[] libroItems = _inventory.GetAllItemsByType(ItemType.Libro);    
           Item[] mapaItems = _inventory.GetAllItemsByType(ItemType.Mapa);    
-          Item[] cuchilloItems = _inventory.GetAllItemsByType(ItemType.Cuchillo);    
+          //Item[] cuchilloItems = _inventory.GetAllItemsByType(ItemType.Cuchillo);    
           Item[] gemaVerdeItems = _inventory.GetAllItemsByType(ItemType.GemaVerde);    
           Item[] gemaRojaItems = _inventory.GetAllItemsByType(ItemType.GemaRoja);
           Item[] gemaRosaItems = _inventory.GetAllItemsByType(ItemType.GemaRosa);
@@ -77,8 +80,8 @@ public class InventoryUI : MonoBehaviour
           if (mapaItems.Length > 0)
               slots[9].SetItem(mapaItems[0], mapaItems.Length);    //mapa   
 
-          if (cuchilloItems.Length > 0)
-              slots[10].SetItem(cuchilloItems[0], cuchilloItems.Length);    //cuchillo
+         // if (cuchilloItems.Length > 0)
+          //    slots[10].SetItem(cuchilloItems[0], cuchilloItems.Length);    //cuchillo
 
 
     

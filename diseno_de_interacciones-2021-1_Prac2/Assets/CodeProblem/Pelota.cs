@@ -10,7 +10,9 @@ public class Pelota : Interactable
     public float magnusScale = 10;
     private Rigidbody rb;
     private float intensity;
-
+    private GameObject TextOff;
+    private GameObject ImageOff;
+    
     // Start is called before the first frame update
     void Start()
     {
