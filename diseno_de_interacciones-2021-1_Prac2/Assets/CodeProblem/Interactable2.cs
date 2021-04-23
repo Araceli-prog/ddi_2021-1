@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using IBM.Watsson.Examples;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -10,8 +11,14 @@ public class Interactable2 : MonoBehaviour
     public float gazeInteractTime = 2f;
     public float gazeTimer = 0;
     public string interactionButton = "Interact";
+    public string voiceCommand = "Brincar";
 
-
+    void Start()
+    {
+        ExampleStreaming commandProcessor = GameObject.FindObjectOfType<ExampleStreaming>();
+        commandProcessor.onVoiceCommandRecognized += OnVoiceCommandRecognized;
+    }
+    
     public virtual void Update()
     {
         // if (isInsideZone && Input.GetKeyDown(interactionKey))
@@ -19,18 +26,25 @@ public class Interactable2 : MonoBehaviour
         {
             Interact();
         }
-
-         if (gazedAt) //Mientras lo estoy obsevando incrementamos el timmer
+        if (gazedAt)
         {
-            if ((gazeTimer += Time.deltaTime) >= gazeInteractTime) //si el timmer ya llego al limite, solo activa
+            if ((gazeTimer += Time.deltaTime) >= gazeInteractTime)
             {
                 Interact();
                 gazedAt = false;
-                gazeTimer = 0f;  //resetear el timmer
+                gazeTimer = 0f;
             }
-        }  
+        }
     }
  
+    public void OnVoiceCommandRecognized(string command)
+    {
+        if (command.ToLower() == voiceCommand.ToLower() && gazedAt)
+        {
+            Interact();
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
@@ -40,7 +54,6 @@ public class Interactable2 : MonoBehaviour
         Debug.Log("Entró en el área");
         isInsideZone = true;
     }
-
 
     public void SetGazedAt(bool gazedAt)
     {
@@ -52,7 +65,34 @@ public class Interactable2 : MonoBehaviour
     }
 
 
-        void OnTriggerExit(Collider other)
+
+
+
+    public void OnPointerEnter()
+    {
+        gazedAt = true;
+        gazeTimer = 0f;
+    }
+
+    public void OnPointerExit()
+    {
+        gazedAt = false;
+        gazeTimer = 0f;
+    }
+
+    /// <summary>
+    /// This method is called by the Main Camera when it is gazing at this GameObject and the screen
+    /// is touched.
+    /// </summary>
+    public void OnPointerClick()
+    {
+        Interact();
+    }
+
+
+
+
+    void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player"))
         {
