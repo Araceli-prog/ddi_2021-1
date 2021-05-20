@@ -1,0 +1,24 @@
+newmtl wing_gno_c
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd wing_gno_c.png
+
+newmtl ch_agi_body_c
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd ch_agi_body_c.png
+
+newmtl ch_agi_face_c
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd ch_agi_face_c.png
+
+newmtl ch_agi_eye_c
+Kd 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ns 32.000000
+map_Kd ch_agi_eye_c.png
+
